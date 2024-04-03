@@ -97,6 +97,10 @@
 		var id = elem.getAttribute('data-youtube');
 		var youtubeParams = elem.getAttribute('data-ytparams') || '';
 
+		if (elem.hasAttribute('data-nocookie')) {
+			youtubeIframe = youtubeIframe.replace('youtube', 'youtube-nocookie');
+		}
+
 		elem.removeEventListener('click', embedYoutubeIframe);
 
 		if (!id || !regValidParam.test(id) || (youtubeParams && !regValidParam.test(youtubeParams))) {
